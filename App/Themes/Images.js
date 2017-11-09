@@ -20,7 +20,9 @@ const images = {
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
-  lc: require('../Images/lc.gif')
+  lc: require('../Images/lc.gif'),
+  vpchat: require('../Images/vpchat.png')
+
 }
 
 export default images
