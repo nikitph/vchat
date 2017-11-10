@@ -49,7 +49,11 @@ class WalkThroughScreen extends React.Component {
             foregroundColor={colors.white}
             backgroundColor={colors.red}
             label="Get Started"
-            onPress={() => this.b1.success()}
+            onPress={() => {
+              this.b1.success();
+              this.props.navigation.navigate('SignUpScreen')
+            }
+            }
             ref={ref => (this.b1 = ref)}
             successIconName="check"
           />
