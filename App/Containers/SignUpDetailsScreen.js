@@ -186,12 +186,26 @@ class SignUpDetailsScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
+type SignUpDetailsScreenProps = {
+  dispatch: PropTypes.func,
+  fetching: PropTypes.boolean,
+  attemptSignUpDetails: PropTypes.func,
+  error: PropTypes.object,
+  uid: PropTypes.string
 }
 
+const mapStateToProps = (state) => {
+  return {
+    fetching: state.signupdetails.fetching,
+    uid: state.signup.payload.uid
+  }
+};
+
 const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+  return {
+    attemptSignUpDetails: (image, displayName, alertfunc, nav, uid) =>
+      dispatch(SignUpDetailsActions.signUpDetailsRequest(image, displayName, alertfunc, nav, uid))
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpDetailsScreen)

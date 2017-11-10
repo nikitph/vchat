@@ -56,6 +56,15 @@ export default function * root () {
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
     takeLatest(SignUpTypes.SIGN_UP_REQUEST, signUp),
     takeLatest(LoginTypes.LOGIN_REQUEST, login),
+    takeLatest(SignUpDetailsTypes.SIGN_UP_DETAILS_REQUEST, uploadSaga),
+    // takeLatest(ResetPasswordTypes.RESET_PASSWORD_REQUEST, resetPassword),
+    // takeLatest(SellItemTypes.SELL_ITEM_REQUEST, sellItemSaga),
+    // takeLatest(ItemChatTypes.ITEM_CHAT_REQUEST, syncMsgSaga),
+    // takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),
+    // takeLatest(ItemTypes.ITEM_REQUEST, syncItemSaga),
+    // takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),
+    // takeLatest(ItemDeleteTypes.ITEM_DELETE_REQUEST, itemDeleteSaga),
+    // takeLatest(ItemUpdateTypes.ITEM_UPDATE_REQUEST, itemUpdateSaga)
 
   ])
 }
