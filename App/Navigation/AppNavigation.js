@@ -1,4 +1,5 @@
 import { StackNavigator } from 'react-navigation'
+import SignUpDetailsScreen from '../Containers/SignUpDetailsScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import SignUpScreen from '../Containers/SignUpScreen'
 import WalkThroughScreen from '../Containers/WalkThroughScreen'
@@ -8,6 +9,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  SignUpDetailsScreen: {screen: SignUpDetailsScreen},
   LoginScreen: {screen: LoginScreen},
   SignUpScreen: {screen: SignUpScreen},
   WalkThroughScreen: {screen: WalkThroughScreen},

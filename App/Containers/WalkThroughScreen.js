@@ -43,7 +43,7 @@ class WalkThroughScreen extends React.Component {
           </View>
         </Image>
         <View
-          style={{flexDirection: 'row', alignItems: 'space-between', backgroundColor: 'white'}}>
+          style={{flexDirection: 'row', alignItems: 'center', backgroundColor: 'white'}}>
           <Button
             bounce
             foregroundColor={colors.white}
