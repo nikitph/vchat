@@ -8,6 +8,19 @@ import DebugConfig from '../Config/DebugConfig'
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { SignUpTypes } from '../Redux/SignUpRedux'
+import { LoginTypes } from '../Redux/LoginRedux'
+// import { SellItemTypes} from '../Redux/SellItemRedux'
+// import { SignUpDetailsTypes} from '../Redux/SignUpDetailsRedux'
+// import { ItemChatTypes} from '../Redux/ItemChatRedux'
+// import { ItemTypes} from '../Redux/ItemRedux'
+// import { ItemUpdateTypes} from '../Redux/ItemUpdateRedux'
+// import { ItemDeleteTypes} from '../Redux/ItemDeleteRedux'
+//
+// import { ItemChatPostTypes} from '../Redux/ItemChatPostRedux'
+// import { NotificationsTypes } from '../Redux/NotificationsRedux'
+//
+// import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
+
 
 
 /* ------------- Sagas ------------- */
@@ -15,7 +28,16 @@ import { SignUpTypes } from '../Redux/SignUpRedux'
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { signUp } from './SignUpSagas'
-
+import { login } from './LoginSagas'
+// import { uploadSaga } from './SignUpDetailsSagas'
+// import { resetPassword } from './ResetPasswordSagas'
+// import { sellItemSaga }  from './SellItemSagas'
+// import { syncMsgSaga } from './ItemChatSagas'
+// import { syncItemSaga } from './ItemSagas'
+// import { itemUpdateSaga } from './ItemUpdateSagas'
+// import { itemDeleteSaga } from './ItemDeleteSagas'
+// import { itemChatPost } from './ItemChatPostSagas'
+// import { syncNotificationsSaga } from './NotificationsSagas'
 
 /* ------------- API ------------- */
 
@@ -33,6 +55,7 @@ export default function * root () {
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
     takeLatest(SignUpTypes.SIGN_UP_REQUEST, signUp),
+    takeLatest(LoginTypes.LOGIN_REQUEST, login),
 
   ])
 }

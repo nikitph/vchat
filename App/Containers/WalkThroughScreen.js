@@ -43,11 +43,13 @@ class WalkThroughScreen extends React.Component {
           </View>
         </Image>
         <View
-          style={{flexDirection: 'row', alignItems: 'flex-end', backgroundColor: 'white'}}>
+          style={{flexDirection: 'row', alignItems: 'space-between', backgroundColor: 'white'}}>
           <Button
             bounce
             foregroundColor={colors.white}
             backgroundColor={colors.red}
+            maxWidth={150}
+            style={{margin: 10}}
             label="Get Started"
             onPress={() => {
               this.b1.success();
@@ -55,6 +57,21 @@ class WalkThroughScreen extends React.Component {
             }
             }
             ref={ref => (this.b1 = ref)}
+            successIconName="check"
+          />
+          <Button
+            bounce
+            foregroundColor={colors.white}
+            backgroundColor={colors.red}
+            maxWidth={150}
+            style={{margin: 10}}
+            label="Login"
+            onPress={() => {
+              this.b2.success();
+              this.props.navigation.navigate('LoginScreen')
+            }
+            }
+            ref={ref => (this.b2 = ref)}
             successIconName="check"
           />
         </View>
