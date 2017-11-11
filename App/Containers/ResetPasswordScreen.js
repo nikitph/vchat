@@ -49,6 +49,8 @@ class ResetPasswordScreen extends Component {
   };
 
   render () {
+    const props = this.props;
+    let fetch = props.fetching;
     return (
       <KeyboardAvoidingView behavior='padding'
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
