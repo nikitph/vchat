@@ -19,7 +19,7 @@ import { SignUpDetailsTypes } from '../Redux/SignUpDetailsRedux'
 // import { ItemChatPostTypes} from '../Redux/ItemChatPostRedux'
 // import { NotificationsTypes } from '../Redux/NotificationsRedux'
 //
-// import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
+import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
 
 
 
@@ -30,7 +30,7 @@ import { getUserAvatar } from './GithubSagas'
 import { signUp } from './SignUpSagas'
 import { login } from './LoginSagas'
 import { uploadSaga } from './SignUpDetailsSagas'
-// import { resetPassword } from './ResetPasswordSagas'
+import { resetPassword } from './ResetPasswordSagas'
 // import { sellItemSaga }  from './SellItemSagas'
 // import { syncMsgSaga } from './ItemChatSagas'
 // import { syncItemSaga } from './ItemSagas'
@@ -57,7 +57,7 @@ export default function * root () {
     takeLatest(SignUpTypes.SIGN_UP_REQUEST, signUp),
     takeLatest(LoginTypes.LOGIN_REQUEST, login),
     takeLatest(SignUpDetailsTypes.SIGN_UP_DETAILS_REQUEST, uploadSaga),
-    // takeLatest(ResetPasswordTypes.RESET_PASSWORD_REQUEST, resetPassword),
+    takeLatest(ResetPasswordTypes.RESET_PASSWORD_REQUEST, resetPassword),
     // takeLatest(SellItemTypes.SELL_ITEM_REQUEST, sellItemSaga),
     // takeLatest(ItemChatTypes.ITEM_CHAT_REQUEST, syncMsgSaga),
     // takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),

@@ -9,7 +9,15 @@ export const reducers = combineReducers({
   search: require('./SearchRedux').reducer,
   signup: require('./SignUpRedux').reducer,
   login: require('./LoginRedux').reducer,
-  signupdetails: require('./SignUpRedux').reducer
+  signupdetails: require('./SignUpRedux').reducer,
+  reset: require('./ResetPasswordRedux').reducer,
+  // sellitem: require('./SellItemRedux').reducer,
+  // itemchat: require('./ItemChatRedux').reducer,
+  // itemchatpost: require('./ItemChatPostRedux').reducer,
+  // item: require('./ItemRedux').reducer,
+  // notifications: require('./NotificationsRedux').reducer,
+  // itemupdate: require('./ItemUpdateRedux').reducer,
+  // itemdelete: require('./ItemDeleteRedux').reducer
 })
 
 export default () => {
