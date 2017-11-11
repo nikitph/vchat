@@ -36,7 +36,7 @@ import { resetPassword } from './ResetPasswordSagas'
 // import { syncItemSaga } from './ItemSagas'
 // import { itemUpdateSaga } from './ItemUpdateSagas'
 // import { itemDeleteSaga } from './ItemDeleteSagas'
-// import { itemChatPost } from './ItemChatPostSagas'
+import { itemChatPost } from './ItemChatPostSagas'
 // import { syncNotificationsSaga } from './NotificationsSagas'
 
 /* ------------- API ------------- */

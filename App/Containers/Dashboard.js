@@ -60,7 +60,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-people-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigate('MyItems', {sold: false});
+                this.props.navigation.navigate('ItemChat', {sold: false});
               }}/>
               <Text>Group Chat</Text>
 

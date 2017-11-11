@@ -13,7 +13,7 @@ export const reducers = combineReducers({
   reset: require('./ResetPasswordRedux').reducer,
   // sellitem: require('./SellItemRedux').reducer,
   // itemchat: require('./ItemChatRedux').reducer,
-  // itemchatpost: require('./ItemChatPostRedux').reducer,
+  itemchatpost: require('./ItemChatPostRedux').reducer,
   // item: require('./ItemRedux').reducer,
   // notifications: require('./NotificationsRedux').reducer,
   // itemupdate: require('./ItemUpdateRedux').reducer,
