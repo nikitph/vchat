@@ -1,4 +1,5 @@
 import { StackNavigator } from 'react-navigation'
+import BuyConversations from '../Containers/BuyConversations'
 import Notifications from '../Containers/Notifications'
 import Dashboard from '../Containers/Dashboard'
 import ResetPasswordScreen from '../Containers/ResetPasswordScreen'
@@ -12,6 +13,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  BuyConversations: {screen: BuyConversations},
   Notifications: {screen: Notifications},
   Dashboard: {screen: Dashboard},
   ResetPasswordScreen: {screen: ResetPasswordScreen},

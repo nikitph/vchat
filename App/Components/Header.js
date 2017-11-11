@@ -44,13 +44,15 @@ class Header extends Component {
   render () {
     return (
       <View style={styles.row}>
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => {
+          this.props.dispatch(dashboardAction);
+        }}>
 
           <Image
             source={Images.vpchat}
             style={{flex: 1, height: 80, alignItems: 'center',}}
             resizeMode={'contain'}/>
-        </View>
+        </TouchableOpacity>
         <View style={styles.container2}>
 
 
