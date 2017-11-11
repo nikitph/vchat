@@ -49,13 +49,7 @@ class Dashboard extends Component {
 
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Header {...this.props.navigation}/>
-        <Image
-          source={{
-            uri: usr.currentUser.photoURL ? usr.currentUser.photoURL : this.props.navigation.state.url ?
-              this.props.navigation.state.url : 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
-          }}
-          style={{flex: 0.3, height: 200, alignItems: 'center'}}
-          resizeMode={'cover'}/>
+
         <View style={styles.container}>
           <View style={{flex: 0.5, flexDirection: 'column'}}>
             <View style={{

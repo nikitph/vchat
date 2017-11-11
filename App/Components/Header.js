@@ -46,7 +46,15 @@ class Header extends Component {
       <View style={styles.row}>
         <View style={styles.container}>
 
-          <View style={{flex: 0.4, alignItems: 'center'}}>
+          <Image
+            source={Images.vpchat}
+            style={{flex: 1, height: 80, alignItems: 'center',}}
+            resizeMode={'contain'}/>
+        </View>
+        <View style={styles.container2}>
+
+
+          <View style={{flex: 0.3, alignItems: 'center'}}>
             <Image
               source={{
                 uri: usr.currentUser.photoURL ? usr.currentUser.photoURL : this.props.state.url ?
@@ -55,11 +63,11 @@ class Header extends Component {
               style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
           </View>
 
-          <TouchableOpacity style={{flex: 0.2, height: 50, alignItems: 'center'}} onPress={() => {
-            this.props.dispatch(dashboardAction);
-          }}>
-            <Image source={Images.vpchat} style={{flex: 1, height: 50, alignItems: 'center'}} resizeMode={'contain'}/>
-          </TouchableOpacity>
+          <View style={{flex: 0.2, alignItems: 'center'}}>
+            <Icon name="ios-chatbubbles" size={25} color="#665234" onPress={() => {
+              this.resetAction('BuyConversations');
+            }}/>
+          </View>
 
           <Animatable.View animation='shake'
                            style={{flex: 0.2, alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>

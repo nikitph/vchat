@@ -15,6 +15,18 @@ export default StyleSheet.create({
     alignContent: 'space-around',
     backgroundColor: 'transparent'
   },
+  container2: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    alignContent: 'space-around',
+    backgroundColor: 'transparent',
+    marginBottom: 5,
+    paddingTop: 5,
+    borderTopColor: '#EEF1F3',
+    borderTopWidth: 1,
+  },
   conContainer: {
     display: 'flex',
     flexDirection: 'row',
