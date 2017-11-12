@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import SignUpDetailsActions from '../Redux/SignUpDetailsRedux'
-// import ItemChatActions from '../Redux/ItemChatRedux'
+import GroupChatActions from '../Redux/GroupChatRedux'
 // import ItemActions from '../Redux/ItemRedux'
 // import NotificationsActions from '../Redux/NotificationsRedux'
 import { dbService, mapp } from '../Services/Firebase'
@@ -26,7 +26,7 @@ export function* uploadSaga ({image, displayName, alertfunc, nav, uid}) {
     });
     const location = yield call(dbService.database.read, `users/${usr.currentUser.uid}/location`);
     yield put(SignUpDetailsActions.signUpDetailsSuccess({uid, displayName, url, location}));
-    // yield put(ItemChatActions.itemChatRequest());
+    yield put(GroupChatActions.groupChatRequest());
     // yield put(ItemActions.itemRequest());
     // yield put(NotificationsActions.notificationsRequest());
     yield call(nav.dispatch, resetAction)

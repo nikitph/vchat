@@ -57,13 +57,18 @@ class ItemChat extends React.Component {
   }
 
   render () {
+    console.log(this.props.messages);
 
     return (
 
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Header {...this.props.navigation}/>
         <GiftedChat
-          messages={this.props.messages}
+          messages={this.props.messages.sort(function compare (a, b) {
+            let dateA = new Date(a.createdAt);
+            let dateB = new Date(b.createdAt);
+            return dateB - dateA;
+          })}
           onSend={(messages) => this.onSend(messages)}
           user={{_id: usr.currentUser.uid, name: usr.currentUser.displayName, avatar: usr.currentUser.photoURL}}
         />
@@ -81,7 +86,8 @@ ItemChat.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  let msgArray = state.itemchat ? state.itemchat.payload ? Object.values(state.itemchat.payload) : [] : [];
+  console.log(state.groupchat);
+  let msgArray = state.groupchat ? state.groupchat.payload ? Object.values(state.groupchat.payload) : [] : [];
   return {
     messages: msgArray
   }

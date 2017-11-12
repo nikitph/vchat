@@ -11,7 +11,7 @@ import { SignUpTypes } from '../Redux/SignUpRedux'
 import { LoginTypes } from '../Redux/LoginRedux'
 // import { SellItemTypes} from '../Redux/SellItemRedux'
 import { SignUpDetailsTypes } from '../Redux/SignUpDetailsRedux'
-// import { ItemChatTypes} from '../Redux/ItemChatRedux'
+import { GroupChatTypes } from '../Redux/GroupChatRedux'
 // import { ItemTypes} from '../Redux/ItemRedux'
 // import { ItemUpdateTypes} from '../Redux/ItemUpdateRedux'
 // import { ItemDeleteTypes} from '../Redux/ItemDeleteRedux'
@@ -32,7 +32,7 @@ import { login } from './LoginSagas'
 import { uploadSaga } from './SignUpDetailsSagas'
 import { resetPassword } from './ResetPasswordSagas'
 // import { sellItemSaga }  from './SellItemSagas'
-// import { syncMsgSaga } from './ItemChatSagas'
+import { syncMsgSaga } from './GroupChatSagas'
 // import { syncItemSaga } from './ItemSagas'
 // import { itemUpdateSaga } from './ItemUpdateSagas'
 // import { itemDeleteSaga } from './ItemDeleteSagas'
@@ -59,7 +59,7 @@ export default function * root () {
     takeLatest(SignUpDetailsTypes.SIGN_UP_DETAILS_REQUEST, uploadSaga),
     takeLatest(ResetPasswordTypes.RESET_PASSWORD_REQUEST, resetPassword),
     // takeLatest(SellItemTypes.SELL_ITEM_REQUEST, sellItemSaga),
-    // takeLatest(ItemChatTypes.ITEM_CHAT_REQUEST, syncMsgSaga),
+    takeLatest(GroupChatTypes.GROUP_CHAT_REQUEST, syncMsgSaga),
     // takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),
     // takeLatest(ItemTypes.ITEM_REQUEST, syncItemSaga),
     takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),

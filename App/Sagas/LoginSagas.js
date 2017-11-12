@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import LoginActions from '../Redux/LoginRedux'
-// import ItemChatActions from '../Redux/ItemChatRedux'
+import GroupChatActions from '../Redux/GroupChatRedux'
 // import ItemActions from '../Redux/ItemRedux'
 // import NotificationsActions from '../Redux/NotificationsRedux'
 import { dbService } from '../Services/Firebase'
@@ -13,7 +13,7 @@ export function* login ({email, password, alertfunc, nav}) {
     const {uid, displayName, photoURL} = response;
     const location = yield call(dbService.database.read, `users/${uid}/location`);
     yield put(LoginActions.loginSuccess({uid, displayName, photoURL, location}));
-    // yield put(ItemChatActions.itemChatRequest());
+    yield put(GroupChatActions.groupChatRequest());
     // yield put(ItemActions.itemRequest());
     // yield put(NotificationsActions.notificationsRequest());
     const resetAction = NavigationActions.reset({
