@@ -48,7 +48,7 @@ class ItemChat extends React.Component {
   onSend (messages = []) {
 
     let msgObj = (messages[0]);
-    this.props.postMessage(Object.assign({}, this.state, msgObj));
+    this.props.postMessage(msgObj);
     this.setState((previousState) => {
       return {
         messages: GiftedChat.append(previousState.messages, messages),

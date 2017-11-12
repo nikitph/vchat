@@ -16,7 +16,7 @@ import { SignUpDetailsTypes } from '../Redux/SignUpDetailsRedux'
 // import { ItemUpdateTypes} from '../Redux/ItemUpdateRedux'
 // import { ItemDeleteTypes} from '../Redux/ItemDeleteRedux'
 //
-// import { ItemChatPostTypes} from '../Redux/ItemChatPostRedux'
+import { ItemChatPostTypes } from '../Redux/ItemChatPostRedux'
 // import { NotificationsTypes } from '../Redux/NotificationsRedux'
 //
 import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
@@ -62,7 +62,7 @@ export default function * root () {
     // takeLatest(ItemChatTypes.ITEM_CHAT_REQUEST, syncMsgSaga),
     // takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),
     // takeLatest(ItemTypes.ITEM_REQUEST, syncItemSaga),
-    // takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),
+    takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),
     // takeLatest(ItemDeleteTypes.ITEM_DELETE_REQUEST, itemDeleteSaga),
     // takeLatest(ItemUpdateTypes.ITEM_UPDATE_REQUEST, itemUpdateSaga)
 
