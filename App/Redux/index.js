@@ -14,6 +14,7 @@ export const reducers = combineReducers({
   // sellitem: require('./SellItemRedux').reducer,
   groupchat: require('./GroupChatRedux').reducer,
   itemchatpost: require('./ItemChatPostRedux').reducer,
+  userlist: require('./UserListRedux').reducer,
   // item: require('./ItemRedux').reducer,
   // notifications: require('./NotificationsRedux').reducer,
   // itemupdate: require('./ItemUpdateRedux').reducer,

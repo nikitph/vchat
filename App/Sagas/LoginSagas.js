@@ -3,6 +3,7 @@ import LoginActions from '../Redux/LoginRedux'
 import GroupChatActions from '../Redux/GroupChatRedux'
 // import ItemActions from '../Redux/ItemRedux'
 // import NotificationsActions from '../Redux/NotificationsRedux'
+import UserListActions from '../Redux/UserListRedux'
 import { dbService } from '../Services/Firebase'
 import { NavigationActions } from 'react-navigation'
 
@@ -14,6 +15,7 @@ export function* login ({email, password, alertfunc, nav}) {
     const location = yield call(dbService.database.read, `users/${uid}/location`);
     yield put(LoginActions.loginSuccess({uid, displayName, photoURL, location}));
     yield put(GroupChatActions.groupChatRequest());
+    yield put(UserListActions.userListRequest());
     // yield put(ItemActions.itemRequest());
     // yield put(NotificationsActions.notificationsRequest());
     const resetAction = NavigationActions.reset({

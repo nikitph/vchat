@@ -7,6 +7,7 @@ import { dbService, mapp } from '../Services/Firebase'
 import { Platform } from 'react-native'
 import { fileUpload } from '../Services/Uploader'
 import { NavigationActions } from 'react-navigation'
+import UserListActions from '../Redux/UserListRedux'
 
 const storage = mapp.storage();
 const usr = mapp.auth();
@@ -28,7 +29,7 @@ export function* uploadSaga ({image, displayName, alertfunc, nav, uid}) {
     yield put(SignUpDetailsActions.signUpDetailsSuccess({uid, displayName, url, location}));
     yield call(dbService.database.create, `userlist`, {uid, displayName, url, location});
     yield put(GroupChatActions.groupChatRequest());
-    // yield put(ItemActions.itemRequest());
+    yield put(UserListActions.userListRequest());
     // yield put(NotificationsActions.notificationsRequest());
     yield call(nav.dispatch, resetAction)
 

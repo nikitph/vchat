@@ -87,7 +87,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-git-network-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigate('MyItems', {sold: false});
+                this.props.navigation.navigate('PeopleList', {sold: false});
               }}/>
               <Text>People</Text>
             </View>
