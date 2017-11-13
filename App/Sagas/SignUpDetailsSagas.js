@@ -26,6 +26,7 @@ export function* uploadSaga ({image, displayName, alertfunc, nav, uid}) {
     });
     const location = yield call(dbService.database.read, `users/${usr.currentUser.uid}/location`);
     yield put(SignUpDetailsActions.signUpDetailsSuccess({uid, displayName, url, location}));
+    yield call(dbService.database.create, `userlist`, {uid, displayName, url, location});
     yield put(GroupChatActions.groupChatRequest());
     // yield put(ItemActions.itemRequest());
     // yield put(NotificationsActions.notificationsRequest());
