@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects'
 import SignUpDetailsActions from '../Redux/SignUpDetailsRedux'
 import GroupChatActions from '../Redux/GroupChatRedux'
 // import ItemActions from '../Redux/ItemRedux'
-// import NotificationsActions from '../Redux/NotificationsRedux'
+import NotificationsActions from '../Redux/NotificationsRedux'
 import { dbService, mapp } from '../Services/Firebase'
 import { Platform } from 'react-native'
 import { fileUpload } from '../Services/Uploader'
@@ -32,7 +32,7 @@ export function* uploadSaga ({image, displayName, alertfunc, nav, uid}) {
     yield put(GroupChatActions.groupChatRequest());
     yield put(DirectChatActions.directChatRequest());
     yield put(UserListActions.userListRequest());
-    // yield put(NotificationsActions.notificationsRequest());
+    yield put(NotificationsActions.notificationsRequest());
     yield call(nav.dispatch, resetAction)
 
   }

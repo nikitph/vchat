@@ -18,7 +18,7 @@ export const reducers = combineReducers({
   directchatpost: require('./DirectChatPostRedux').reducer,
   directchat: require('./DirectChatRedux').reducer,
   // item: require('./ItemRedux').reducer,
-  // notifications: require('./NotificationsRedux').reducer,
+  notifications: require('./NotificationsRedux').reducer,
   // itemupdate: require('./ItemUpdateRedux').reducer,
   // itemdelete: require('./ItemDeleteRedux').reducer
 })

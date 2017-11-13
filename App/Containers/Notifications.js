@@ -20,39 +20,6 @@ class Notifications extends React.PureComponent {
 
   };
 
-  renderItems (count) {
-    return ["Clear Notifs", "Back"].map((i) => {
-      return (
-        <TouchableOpacity style={styles.rmitem} key={i}
-                          onSelect={() => {
-                            if (i == "Back")
-                              this.props.navigation.navigate('Dashboard');
-                            else {
-                              let itemRef =
-                                db.ref(`users/${usr.currentUser.uid}/notifications`)
-                                  .remove();
-
-                            }
-                          }}
-
-                          onPress={() => {
-                            if (i == "Back")
-                              this.props.navigation.navigate('Dashboard');
-                            else {
-                              let itemRef =
-                                db.ref(`users/${usr.currentUser.uid}/notifications`)
-                                  .remove();
-
-                            }
-                          }}
-        >
-          <Text
-            style={{fontFamily: 'Avenir', textAlign: 'center', color: '#665234', fontSize: 12, fontWeight: '400'}}>
-            {i}</Text>
-        </TouchableOpacity>
-      );
-    })
-  }
 
   state = {
     dataObjects: [
@@ -67,18 +34,16 @@ class Notifications extends React.PureComponent {
   };
 
   renderRow ({item}, nav) {
-    console.log(item);
-    let isUserSeller = item.sellerId == usr.currentUser.uid;
     return (
-      <TouchableOpacity style={styles.row} onPress={() => nav.navigate('ItemChat',
-        {item: item, itemKey: item.itemKey})}>
+      <TouchableOpacity style={styles.row} onPress={() => nav.navigate('DirectChat',
+        {receiver: item.receiver})}>
         <View style={{flex: 0.2, alignItems: 'flex-start'}}>
-          <Image source={{uri: isUserSeller ? item.buyerPic : item.sellerPic}}
+          <Image source={{uri: item.avatar}}
                  style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
         </View>
         <View style={{flex: 0.7, alignItems: 'flex-start'}}>
-          <Text style={styles.label}>{isUserSeller ? item.buyerName : item.sellerName} has sent you a message
-            regarding {item.itemSummary}</Text>
+          <Text style={styles.label}>{item.displayName} has sent you a message
+          </Text>
         </View>
         <View style={{flex: 0.1, alignItems: 'center'}}>
           <Icon name="ios-arrow-forward" size={32} color="rgba(116,100,78,1)"
@@ -94,16 +59,9 @@ class Notifications extends React.PureComponent {
    * to your liking!  Each with some friendly advice.
    *************************************************************/
   // Render a header?
-  renderHeader = () =>
-    <SearchBar
-      onSearch={() => {}}
-      onCancel={() => {}}
-      searchTerm='HELLO!!'
-    />
 
   // Render a footer?
-  renderFooter = () =>
-    <Text style={[styles.label, styles.sectionHeader]}> - Footer - </Text>
+
 
   // Show this when data is empty
   renderEmpty = () =>
@@ -117,11 +75,6 @@ class Notifications extends React.PureComponent {
   // item reordering.  Otherwise index is fine
   keyExtractor = (item, index) => index
 
-  handleFieldChange (value, fieldName) {
-    let inputObj = {};
-    inputObj[fieldName] = value == "Conversations with buyers";
-    this.setState(inputObj);
-  }
 
   // How many items should be kept im memory as we scroll?
   oneScreensWorth = 20
@@ -171,8 +124,8 @@ const mapStateToProps = (state) => {
   let msgArray = [];
   if (state.notifications) {
     msgArray = state.notifications.payload ? Object.values(state.notifications.payload)
-      .map(({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic}) =>
-        ({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic})) : [];
+      .map((msg) =>
+        ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar})) : [];
   }
   return {
     notifications: _.uniqWith(msgArray, _.isEqual)

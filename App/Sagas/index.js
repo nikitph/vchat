@@ -17,7 +17,7 @@ import { GroupChatTypes } from '../Redux/GroupChatRedux'
 // import { ItemDeleteTypes} from '../Redux/ItemDeleteRedux'
 //
 import { ItemChatPostTypes } from '../Redux/ItemChatPostRedux'
-// import { NotificationsTypes } from '../Redux/NotificationsRedux'
+import { NotificationsTypes } from '../Redux/NotificationsRedux'
 //
 import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
 import { UserListTypes } from '../Redux/UserListRedux'
@@ -38,7 +38,7 @@ import { syncMsgSaga } from './GroupChatSagas'
 // import { itemUpdateSaga } from './ItemUpdateSagas'
 // import { itemDeleteSaga } from './ItemDeleteSagas'
 import { itemChatPost } from './ItemChatPostSagas'
-// import { syncNotificationsSaga } from './NotificationsSagas'
+import { syncNotificationsSaga } from './NotificationsSagas'
 import { syncUserSaga } from './UserListSagas'
 import { directChatPost } from './DirectChatPostSagas'
 import { syncDirectMsgSaga } from './DirectChatSagas'
@@ -64,7 +64,7 @@ export default function * root () {
     takeLatest(ResetPasswordTypes.RESET_PASSWORD_REQUEST, resetPassword),
     // takeLatest(SellItemTypes.SELL_ITEM_REQUEST, sellItemSaga),
     takeLatest(GroupChatTypes.GROUP_CHAT_REQUEST, syncMsgSaga),
-    // takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),
+    takeLatest(NotificationsTypes.NOTIFICATIONS_REQUEST, syncNotificationsSaga),
     // takeLatest(ItemTypes.ITEM_REQUEST, syncItemSaga),
     takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),
     // takeLatest(ItemDeleteTypes.ITEM_DELETE_REQUEST, itemDeleteSaga),

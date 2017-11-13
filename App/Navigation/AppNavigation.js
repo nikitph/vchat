@@ -16,6 +16,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  Notifications: {screen: Notifications},
   DirectChat: {screen: DirectChat},
   PeopleList: {screen: PeopleList},
   ItemChat: {screen: ItemChat},

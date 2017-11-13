@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects'
 import LoginActions from '../Redux/LoginRedux'
 import GroupChatActions from '../Redux/GroupChatRedux'
 // import ItemActions from '../Redux/ItemRedux'
-// import NotificationsActions from '../Redux/NotificationsRedux'
+import NotificationsActions from '../Redux/NotificationsRedux'
 import UserListActions from '../Redux/UserListRedux'
 import { dbService } from '../Services/Firebase'
 import { NavigationActions } from 'react-navigation'
@@ -19,7 +19,7 @@ export function* login ({email, password, alertfunc, nav}) {
     yield put(DirectChatActions.directChatRequest());
     yield put(UserListActions.userListRequest());
     // yield put(ItemActions.itemRequest());
-    // yield put(NotificationsActions.notificationsRequest());
+    yield put(NotificationsActions.notificationsRequest());
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
