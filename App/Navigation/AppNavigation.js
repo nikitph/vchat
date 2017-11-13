@@ -1,4 +1,5 @@
 import { StackNavigator } from 'react-navigation'
+import DirectChat from '../Containers/DirectChat'
 import PeopleList from '../Containers/PeopleList'
 import ItemChat from '../Containers/ItemChat'
 import BuyConversations from '../Containers/BuyConversations'
@@ -15,6 +16,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  DirectChat: {screen: DirectChat},
   PeopleList: {screen: PeopleList},
   ItemChat: {screen: ItemChat},
   BuyConversations: {screen: BuyConversations},

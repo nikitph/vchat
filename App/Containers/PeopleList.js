@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList, Image } from 'react-native'
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
 // More info here: https://facebook.github.io/react-native/docs/flatlist.html
@@ -7,6 +7,28 @@ import { connect } from 'react-redux'
 // Styles
 import styles from './Styles/PeopleListStyle'
 import Header from '../Components/Header'
+
+class MyListItem extends React.PureComponent {
+  _onPress = () => {
+    this.props.nav.navigate('DirectChat', {receiver: this.props.uid})
+  };
+
+  render () {
+
+    const props = this.props;
+    return (
+      <TouchableOpacity style={styles.row} onPress={this._onPress}>
+        <Image
+          source={{
+            uri: props.url ? props.url : 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+          }}
+          style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
+        <Text style={styles.boldLabel}>{props.displayName}</Text>
+      </TouchableOpacity>
+    )
+  }
+}
+
 
 class PeopleList extends React.PureComponent {
 
@@ -40,19 +62,16 @@ class PeopleList extends React.PureComponent {
   * e.g.
     return <MyCustomCell title={item.title} description={item.description} />
   *************************************************************/
-  renderRow ({item}) {
+  renderRow ({item}, nav) {
     console.log(item);
-    return (
-      <View style={styles.row}>
-        <Image
-          source={{
-            uri: item.url ? item.url : 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
-          }}
-          style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
-        <Text style={styles.boldLabel}>{item.displayName}</Text>
-        <Text style={styles.label}>{item.description}</Text>
-      </View>
-    )
+    return <MyListItem
+      url={item.url}
+      displayName={item.displayName}
+      uid={item.uid}
+      location={item.location}
+      nav={nav}
+    />
+
   }
 
   /* ***********************************************************
@@ -104,7 +123,7 @@ class PeopleList extends React.PureComponent {
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.props.items}
-          renderItem={this.renderRow}
+          renderItem={item => this.renderRow(item, this.props.navigation)}
           numColumns={3}
           keyExtractor={this.keyExtractor}
           initialNumToRender={this.oneScreensWorth}

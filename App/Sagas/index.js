@@ -21,6 +21,8 @@ import { ItemChatPostTypes } from '../Redux/ItemChatPostRedux'
 //
 import { ResetPasswordTypes } from '../Redux/ResetPasswordRedux'
 import { UserListTypes } from '../Redux/UserListRedux'
+import { DirectChatPostTypes } from '../Redux/DirectChatPostRedux'
+import { DirectChatTypes } from '../Redux/DirectChatRedux'
 
 /* ------------- Sagas ------------- */
 
@@ -38,6 +40,8 @@ import { syncMsgSaga } from './GroupChatSagas'
 import { itemChatPost } from './ItemChatPostSagas'
 // import { syncNotificationsSaga } from './NotificationsSagas'
 import { syncUserSaga } from './UserListSagas'
+import { directChatPost } from './DirectChatPostSagas'
+import { syncDirectMsgSaga } from './DirectChatSagas'
 
 /* ------------- API ------------- */
 
@@ -65,7 +69,9 @@ export default function * root () {
     takeLatest(ItemChatPostTypes.ITEM_CHAT_POST_REQUEST, itemChatPost),
     // takeLatest(ItemDeleteTypes.ITEM_DELETE_REQUEST, itemDeleteSaga),
     // takeLatest(ItemUpdateTypes.ITEM_UPDATE_REQUEST, itemUpdateSaga)
-    takeLatest(UserListTypes.USER_LIST_REQUEST, syncUserSaga)
+    takeLatest(UserListTypes.USER_LIST_REQUEST, syncUserSaga),
+    takeLatest(DirectChatPostTypes.DIRECT_CHAT_POST_REQUEST, directChatPost),
+    takeLatest(DirectChatTypes.DIRECT_CHAT_REQUEST, syncDirectMsgSaga)
 
   ])
 }

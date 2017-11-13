@@ -18,15 +18,15 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
   boldLabel: {
-    fontWeight: 'bold',
+    fontFamily: 'PingFangTC-Thin',
     alignSelf: 'center',
     color: 'black',
     textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+    marginTop: Metrics.smallMargin
   },
   label: {
     textAlign: 'center',
-    color: Colors.snow
+    color: 'black'
   },
   listContent: {}
 })
