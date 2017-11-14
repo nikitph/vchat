@@ -32,6 +32,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: '#665234'
   },
   label: {
     textAlign: 'center',
