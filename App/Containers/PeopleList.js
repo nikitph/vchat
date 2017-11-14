@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-
+import { mapp } from '../Services/Firebase'
 // More info here: https://facebook.github.io/react-native/docs/flatlist.html
-
 // Styles
 import styles from './Styles/PeopleListStyle'
 import Header from '../Components/Header'
+
+const usr = mapp.auth();
+
 
 class MyListItem extends React.PureComponent {
   _onPress = () => {
@@ -63,7 +65,10 @@ class PeopleList extends React.PureComponent {
     return <MyCustomCell title={item.title} description={item.description} />
   *************************************************************/
   renderRow ({item}, nav) {
-    console.log(item);
+
+    if (item.uid === usr.currentUser.uid)
+      return;
+
     return <MyListItem
       url={item.url}
       displayName={item.displayName}

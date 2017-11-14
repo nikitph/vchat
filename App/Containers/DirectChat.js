@@ -67,8 +67,8 @@ class DirectChat extends React.Component {
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Header {...this.props.navigation}/>
         <GiftedChat
-          messages={this.props.messages.filter(msg => (msg.receiver === usr.currentUser.uid ||
-            msg.receiver === receiver)).sort(function compare (a, b) {
+          messages={this.props.messages.filter(msg => ((msg.sender === receiver && msg.receiver === usr.currentUser.uid) ||
+            ( msg.receiver === receiver && msg.sender === usr.currentUser.uid))).sort(function compare (a, b) {
             let dateA = new Date(a.createdAt);
             let dateB = new Date(b.createdAt);
             return dateB - dateA;

@@ -9,7 +9,7 @@ export function* directChatPost (action) {
   const {data} = action;
   const {text, receiver, _id} = data;
   const msgObj = Object.assign({text, _id, receiver},
-    {createdAt: data.createdAt.toJSON()}, {user: data.user});
+    {createdAt: data.createdAt.toJSON()}, {user: data.user, sender: usr.currentUser.uid});
   console.log(db);
   console.log(msgObj);
 

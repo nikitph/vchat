@@ -36,7 +36,7 @@ class Notifications extends React.PureComponent {
   renderRow ({item}, nav) {
     return (
       <TouchableOpacity style={styles.row} onPress={() => nav.navigate('DirectChat',
-        {receiver: item.receiver})}>
+        {receiver: item._id})}>
         <View style={{flex: 0.2, alignItems: 'flex-start'}}>
           <Image source={{uri: item.avatar}}
                  style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>

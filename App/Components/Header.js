@@ -124,7 +124,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   let notif = state.notifications ? state.notifications.payload : [];
   let notifArray = notif ? Object.values(notif)
-    .map(({sellerName, sellerId, itemKey, itemSummary}) => ({sellerName, sellerId, itemKey, itemSummary})) : [];
+    .map((msg) =>
+      ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar})) : [];
   return {
     notifs: _.uniqWith(notifArray, _.isEqual)
   };
