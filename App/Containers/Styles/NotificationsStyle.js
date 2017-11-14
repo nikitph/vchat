@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Metrics, Colors } from '../../Themes'
+import { ApplicationStyles, Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -9,12 +9,14 @@ export default StyleSheet.create({
   },
   row: {
     flex: 1,
-    backgroundColor: 'rgba(116,100,78,0.4)',
+    backgroundColor: 'rgba(116,100,78,0.1)',
     margin: 0,
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    borderBottomColor: 'rgba(0,0,0,0.1)',
+    borderBottomWidth: 1,
   },
   boldLabel: {
     fontWeight: 'bold',
@@ -30,7 +32,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   label: {
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'rgb(79, 18, 34)',
     fontSize: 16,
     fontFamily: 'Avenir'
@@ -38,7 +40,14 @@ export default StyleSheet.create({
   listContent: {
     marginTop: 0
   },
-  topacity: {flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5, backgroundColor: '#665234'},
+  topacity: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 5,
+    backgroundColor: '#665234',
+
+  },
 
   rmcontainer: {
     justifyContent: 'center',

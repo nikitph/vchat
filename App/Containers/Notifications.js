@@ -46,7 +46,7 @@ class Notifications extends React.PureComponent {
           </Text>
         </View>
         <View style={{flex: 0.1, alignItems: 'center'}}>
-          <Icon name="ios-arrow-forward" size={32} color="rgba(116,100,78,1)"
+          <Icon name="ios-arrow-forward" size={25} color="rgba(116,100,78,0.5)"
           />
         </View>
       </TouchableOpacity>
@@ -113,7 +113,6 @@ class Notifications extends React.PureComponent {
           keyExtractor={this.keyExtractor}
           initialNumToRender={this.oneScreensWorth}
           ListEmptyComponent={this.renderEmpty}
-          ItemSeparatorComponent={this.renderSeparator}
         />
       </View>
     )
