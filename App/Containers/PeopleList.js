@@ -126,12 +126,12 @@ class PeopleList extends React.PureComponent {
       <View style={styles.container}>
         <Header {...this.props.navigation}/>
         <View style={styles.conContainer}>
-          <TouchableOpacity
+          <View
             style={styles.topacity}>
-            <Text style={{color: '#F4EAD3', fontSize: 14}}>
+            <Text style={{color: '#F4EAD3', fontSize: 18 , fontFamily: 'PingFangTC-Thin'}}>
               People
             </Text>
-          </TouchableOpacity>
+          </View>
         </View>
         <FlatList
           contentContainerStyle={styles.listContent}

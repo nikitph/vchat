@@ -53,60 +53,62 @@ class Dashboard extends Component {
 
         <View style={styles.container}>
           <View style={{flex: 0.5, flexDirection: 'column'}}>
-            <View style={{
+            <TouchableOpacity style={{
               borderColor: '#EEF1F3',
               borderWidth: 1,
               flex: 0.5,
               justifyContent: 'center',
               alignItems: 'center'
+            }} onPress={() => {
+              this.props.navigation.navigate('ItemChat');
             }}>
-              <Icon name="ios-people-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigation.navigate('ItemChat');
-              }}/>
-              <Text>Group Chat</Text>
+              <Icon name="ios-people-outline" size={50} color="#665234" />
+              <Text style={{ fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
+                Group Chat</Text>
 
-            </View>
-            <View style={{
+            </TouchableOpacity>
+            <TouchableOpacity style={{
               borderColor: '#EEF1F3',
               borderWidth: 1,
               flex: 0.5,
               justifyContent: 'center',
               alignItems: 'center'
+            }} onPress={() => {
+              this.props.navigation.navigate('BuyConversations');
             }}>
-              <Icon name="ios-chatbubbles-outline" size={45} color="#665234" onPress={() => {
-                this.props.navigation.navigate('BuyConversations');
-              }}/>
-              <Text>Conversations</Text>
-            </View>
+              <Icon name="ios-chatbubbles-outline" size={45} color="#665234"/>
+              <Text style={{ fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
+                Conversations</Text>
+            </TouchableOpacity>
           </View>
           <View style={{flex: 0.5, flexDirection: 'column'}}>
-            <View style={{
+            <TouchableOpacity style={{
               borderColor: '#EEF1F3',
               borderWidth: 1,
               flex: 0.5,
               justifyContent: 'center',
               alignItems: 'center'
+            }} onPress={() => {
+              this.props.navigation.navigate('PeopleList');
             }}>
-              <Icon name="ios-git-network-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigation.navigate('PeopleList');
-              }}/>
-              <Text>People</Text>
-            </View>
-            <View style={{
+              <Icon name="ios-git-network-outline" size={50} color="#665234" />
+              <Text style={{ fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
+                People</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{
               borderColor: '#EEF1F3',
               borderWidth: 1,
               flex: 0.5,
               justifyContent: 'center',
               alignItems: 'center'
+            }} onPress={() => {
+              this.props.navigation.navigate('Notifications');
             }}>
-              <Icon name="ios-notifications-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigation.navigate('Notifications');
-              }}/>
-              <Text>Notifications</Text>
-            </View>
+              <Icon name="ios-notifications-outline" size={50} color="#665234" />
+              <Text style={{ fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
+                Notifications</Text>
+            </TouchableOpacity>
           </View>
-
-
         </View>
       </View>
     )
