@@ -12,6 +12,7 @@ import * as _ from 'lodash'
 // Styles
 import styles from './Styles/DashboardStyle'
 import { NavigationActions } from 'react-navigation'
+import Badge from '../Components/Badge'
 
 const usr = mapp.auth();
 
@@ -60,7 +61,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-people-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigation.navigate('ItemChat', {sold: false});
+                this.props.navigation.navigate('ItemChat');
               }}/>
               <Text>Group Chat</Text>
 
@@ -73,7 +74,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-chatbubbles-outline" size={45} color="#665234" onPress={() => {
-                this.props.navigate('MyItems', {sold: false});
+                this.props.navigation.navigate('BuyConversations');
               }}/>
               <Text>Conversations</Text>
             </View>
@@ -87,7 +88,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-git-network-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigation.navigate('PeopleList', {sold: false});
+                this.props.navigation.navigate('PeopleList');
               }}/>
               <Text>People</Text>
             </View>
@@ -99,7 +100,7 @@ class Dashboard extends Component {
               alignItems: 'center'
             }}>
               <Icon name="ios-notifications-outline" size={50} color="#665234" onPress={() => {
-                this.props.navigate('MyItems', {sold: false});
+                this.props.navigation.navigate('Notifications');
               }}/>
               <Text>Notifications</Text>
             </View>
@@ -114,10 +115,10 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   let msgArray = [];
-  if (state.itemchat) {
-    msgArray = state.itemchat.payload ? Object.values(state.itemchat.payload)
-      .map(({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic}) =>
-        ({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic})) : [];
+  if (state.directchat) {
+    msgArray = state.directchat.payload ? Object.values(state.directchat.payload)
+      .map((msg) =>
+        ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar})) : [];
   }
   return {
     items: [],

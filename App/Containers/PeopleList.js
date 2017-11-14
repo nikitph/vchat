@@ -125,6 +125,14 @@ class PeopleList extends React.PureComponent {
     return (
       <View style={styles.container}>
         <Header {...this.props.navigation}/>
+        <View style={styles.conContainer}>
+          <TouchableOpacity
+            style={styles.topacity}>
+            <Text style={{color: '#F4EAD3', fontSize: 14}}>
+              People
+            </Text>
+          </TouchableOpacity>
+        </View>
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.props.items}
@@ -132,8 +140,6 @@ class PeopleList extends React.PureComponent {
           numColumns={3}
           keyExtractor={this.keyExtractor}
           initialNumToRender={this.oneScreensWorth}
-          ListHeaderComponent={this.renderHeader}
-          ListFooterComponent={this.renderFooter}
           ListEmptyComponent={this.renderEmpty}
         />
       </View>

@@ -17,6 +17,14 @@ export default StyleSheet.create({
     borderColor: '#EEF1F3',
     borderWidth: 1,
   },
+  conContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  topacity: {flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5, backgroundColor: '#665234'},
+
   boldLabel: {
     fontFamily: 'PingFangTC-Thin',
     alignSelf: 'center',

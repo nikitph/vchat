@@ -22,10 +22,12 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignContent: 'space-around',
     backgroundColor: 'transparent',
-    marginBottom: 5,
     paddingTop: 5,
+    paddingBottom: 5,
     borderTopColor: '#EEF1F3',
     borderTopWidth: 1,
+    borderBottomColor: '#EEF1F3',
+    borderBottomWidth: 1,
   },
   conContainer: {
     display: 'flex',

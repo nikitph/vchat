@@ -47,17 +47,14 @@ class BuyConversations extends React.PureComponent {
   *************************************************************/
   renderRow ({item}, nav) {
     return (
-      <TouchableOpacity style={styles.row} onPress={() => nav.navigate('ItemChat',
-        {item: item, itemKey: item.itemKey})}>
+      <TouchableOpacity style={styles.row} onPress={() => nav.navigate('DirectChat',
+        {receiver: item._id})}>
         <View style={{flex: 0.2, alignItems: 'flex-start'}}>
-          <Image source={{uri: this.state.onlyBuyerMessages ? item.buyerPic : item.sellerPic}}
+          <Image source={{uri: item.avatar}}
                  style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
         </View>
-        <View style={{flex: 0.4, alignItems: 'flex-start'}}>
-          <Text style={styles.label}>{this.state.onlyBuyerMessages ? item.buyerName : item.sellerName}</Text>
-        </View>
-        <View style={{flex: 0.3, alignItems: 'flex-start'}}>
-          <Text style={styles.label}>Re: {item.itemSummary}</Text>
+        <View style={{flex: 0.7, alignItems: 'flex-start'}}>
+          <Text style={styles.label}>{item.displayName}</Text>
         </View>
         <View style={{flex: 0.1, alignItems: 'center'}}>
           <Icon name="ios-arrow-forward" size={32} color="rgba(116,100,78,1)"
@@ -135,7 +132,7 @@ class BuyConversations extends React.PureComponent {
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.props.conversations.filter(msg => {
-            return msg.buyerId == usr.currentUser.uid
+            return msg._id !== usr.currentUser.uid
           })}
           renderItem={item => this.renderRow(item, this.props.navigation)}
           keyExtractor={this.keyExtractor}
@@ -149,10 +146,10 @@ class BuyConversations extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   let msgArray = [];
-  if (state.itemchat) {
-    msgArray = state.itemchat.payload ? Object.values(state.itemchat.payload)
-      .map(({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic}) =>
-        ({sellerName, sellerId, sellerPic, itemKey, itemSummary, buyerName, buyerId, buyerPic})) : [];
+  if (state.directchat) {
+    msgArray = state.directchat.payload ? Object.values(state.directchat.payload)
+      .map((msg) =>
+        ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar})) : [];
   }
   return {
     conversations: _.uniqWith(msgArray, _.isEqual)
