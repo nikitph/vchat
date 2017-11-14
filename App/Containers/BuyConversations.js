@@ -124,7 +124,7 @@ class BuyConversations extends React.PureComponent {
         <View style={styles.conContainer}>
           <View
             style={styles.topacity}>
-            <Text style={{color: '#F4EAD3', fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
+            <Text style={{color: '#F4EAD3', fontSize: 18 , fontFamily: 'PingFangTC-Thin'}}>
               Conversations
             </Text>
           </View>
