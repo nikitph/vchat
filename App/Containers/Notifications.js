@@ -65,7 +65,7 @@ class Notifications extends React.PureComponent {
 
   // Show this when data is empty
   renderEmpty = () =>
-    <Text style={styles.label}> - There are no Notifications - </Text>
+    <Text style={styles.labele}> - There are no Notifications - </Text>
 
   renderSeparator = () =>
     <Text> </Text>
@@ -99,11 +99,23 @@ class Notifications extends React.PureComponent {
       <View style={styles.container}>
         <Header {...navigation}/>
         <View style={styles.conContainer}>
-          <TouchableOpacity
+          <View
             style={styles.topacity}>
-            <Text style={{color: '#F4EAD3', fontSize: 14}}>
+            <Text style={{color: '#F4EAD3', fontSize: 22}}> </Text>
+          </View>
+          <View
+            style={styles.topacity}>
+            <Text style={{color: '#F4EAD3', fontSize: 18, fontFamily: 'PingFangTC-Thin'}}>
               Notifications
             </Text>
+          </View>
+          <TouchableOpacity
+            style={styles.topacity2}>
+            <Icon name="ios-list" size={30} color="white" onPress={() => {
+              let itemRef =
+                db.ref(`users/${usr.currentUser.uid}/notifications`)
+                  .remove();
+            }}/>
           </TouchableOpacity>
         </View>
         <FlatList

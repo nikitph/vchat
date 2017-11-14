@@ -30,9 +30,16 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: '#665234'
   },
   label: {
     textAlign: 'left',
+    color: 'rgb(79, 18, 34)',
+    fontSize: 16,
+    fontFamily: 'Avenir'
+  },
+  labele: {
+    textAlign: 'center',
     color: 'rgb(79, 18, 34)',
     fontSize: 16,
     fontFamily: 'Avenir'
@@ -46,6 +53,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 5,
     backgroundColor: '#665234',
+
+  },
+  topacity2: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#665234',
+    paddingRight: 10
 
   },
 

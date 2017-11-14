@@ -57,7 +57,7 @@ class BuyConversations extends React.PureComponent {
           <Text style={styles.label}>{item.displayName}</Text>
         </View>
         <View style={{flex: 0.1, alignItems: 'center'}}>
-          <Icon name="ios-arrow-forward" size={32} color="rgba(116,100,78,1)"
+          <Icon name="ios-arrow-forward" size={25} color="rgba(116,100,78,0.5)"
           />
         </View>
       </TouchableOpacity>

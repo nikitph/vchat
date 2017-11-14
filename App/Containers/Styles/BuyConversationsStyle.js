@@ -9,8 +9,10 @@ export default StyleSheet.create({
   },
   row: {
     flex: 1,
-    backgroundColor: 'rgba(116,100,78,0.4)',
-    margin: Metrics.smallMargin,
+    backgroundColor: 'rgba(116,100,78,0.2)',
+    margin: 2,
+    marginLeft: 5,
+    marginRight: 5,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
