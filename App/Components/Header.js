@@ -65,22 +65,24 @@ class Header extends Component {
               style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
           </View>
 
-          <View style={{flex: 0.2, alignItems: 'center'}}>
-            <Icon name="ios-chatbubbles" size={25} color="#665234" onPress={() => {
-              this.resetAction('BuyConversations');
-            }}/>
-          </View>
+          <TouchableOpacity style={{flex: 0.2, alignItems: 'center'}} onPress={() => {
+            this.resetAction('BuyConversations');
+          }}>
+            <Icon name="ios-chatbubbles" size={25} color="#665234" />
+          </TouchableOpacity>
 
           <Animatable.View animation='shake'
                            style={{flex: 0.2, alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
-            <Icon name="ios-notifications-outline" size={25} color="#665234" onPress={() => {
+            <TouchableOpacity style={{flex:1, alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}} onPress={() => {
               this.resetAction('Notifications');
-            }}/>
+            }}>
+            <Icon name="ios-notifications-outline" size={25} color="#665234" />
             <Badge minWidth={12} minHeight={12} textStyle={{fontSize: 10, color: 'white'}}
                    style={{backgroundColor: 'green', marginBottom: 16, marginLeft: -5}}
             >
               {this.props.notifs.length}
             </Badge>
+            </TouchableOpacity>
           </Animatable.View>
 
           <View style={{flex: 0.2, alignItems: 'center'}}>
