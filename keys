@@ -1,0 +1,11 @@
+server key : AAAAIB6AXjA:APA91bEsJVXarqMYoCCVdA1P8HizlA7G0Jh1laKO2XkufXCiFLKGonHgr8oBdmVxnSEYUlIG4DikSHNLJgoTb7t88WbsvKiVM-4zSm3bv4TCp2Nr3FhO-i5hFEiOkQk0RQ27cz7_5EbC
+
+sender id : 137950682672
+
+appid: 31f07d98-5e68-410b-922a-69194163ada3
+
+@synthesize oneSignal = _oneSignal;
+
+
+self.oneSignal = [[RCTOneSignal alloc] initWithLaunchOptions:launchOptions
+                                                         appId:@"31f07d98-5e68-410b-922a-69194163ada3"];

@@ -50,7 +50,7 @@ class DirectChat extends React.Component {
 
     let msgObj = (messages[0]);
     const { receiver, pushId } = this.props.navigation.state.params;
-    this.props.postMessage(Object.assign({}, msgObj, {receiver: receiver}));
+    this.props.postMessage(Object.assign({}, msgObj, {receiver: receiver, messageSenderPushId: this.props.userPushId }));
     OneSignal.postNotification({en: msgObj.user.name + ' says : ' + msgObj.text}, {}, pushId);
     this.setState((previousState) => {
       return {
@@ -85,14 +85,17 @@ class DirectChat extends React.Component {
 
 DirectChat.propTypes = {
 
-  postMessage: PropTypes.func
+  postMessage: PropTypes.func,
+  userPushId: PropTypes.string
 
 };
 
 const mapStateToProps = (state) => {
   let msgArray = state.directchat ? state.directchat.payload ? Object.values(state.directchat.payload) : [] : [];
+  let userPushId = state.login.payload ? state.login.payload.device.userId : state.signupdetails.payload.device.userId;
   return {
-    messages: msgArray
+    messages: msgArray,
+    userPushId: userPushId
   }
 };
 

@@ -7,8 +7,8 @@ const usr = mapp.auth()
 
 export function* directChatPost (action) {
   const {data} = action;
-  const {text, receiver, _id} = data;
-  const msgObj = Object.assign({text, _id, receiver},
+  const {text, receiver, _id, messageSenderPushId} = data;
+  const msgObj = Object.assign({text, _id, receiver, messageSenderPushId},
     {createdAt: data.createdAt.toJSON()}, {user: data.user, sender: usr.currentUser.uid});
 
 

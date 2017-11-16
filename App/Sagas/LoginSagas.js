@@ -14,7 +14,8 @@ export function* login ({email, password, alertfunc, nav}) {
     const response = yield call(dbService.auth.signInWithEmailAndPassword, email.toString(), password.toString(), function () {});
     const {uid, displayName, photoURL} = response;
     const location = yield call(dbService.database.read, `users/${uid}/location`);
-    yield put(LoginActions.loginSuccess({uid, displayName, photoURL, location}));
+    const device = yield call(dbService.database.read, `users/${uid}/device`);
+    yield put(LoginActions.loginSuccess({uid, displayName, photoURL, location, device}));
     yield put(GroupChatActions.groupChatRequest());
     yield put(DirectChatActions.directChatRequest());
     yield put(UserListActions.userListRequest());

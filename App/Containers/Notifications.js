@@ -36,7 +36,7 @@ class Notifications extends React.PureComponent {
   renderRow ({item}, nav) {
     return (
       <TouchableOpacity style={styles.row} onPress={() => nav.navigate('DirectChat',
-        {receiver: item._id})}>
+        {receiver: item._id, pushId: item.messageSenderPushId})}>
         <View style={{flex: 0.2, alignItems: 'flex-start'}}>
           <Image source={{uri: item.avatar}}
                  style={{borderRadius: 20, height: 40, width: 40, alignItems: 'center'}} resizeMode={'cover'}/>
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => {
   if (state.notifications) {
     msgArray = state.notifications.payload ? Object.values(state.notifications.payload)
       .map((msg) =>
-        ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar})) : [];
+        ({displayName: msg.user.name, _id: msg.user._id, avatar: msg.user.avatar, messageSenderPushId: msg.messageSenderPushId})) : [];
   }
   return {
     notifications: _.uniqWith(msgArray, _.isEqual)
