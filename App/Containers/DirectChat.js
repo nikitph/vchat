@@ -15,6 +15,7 @@ import Animatable from 'react-native-animatable'
 // Styles
 import styles from './Styles/ItemChatStyle'
 import { dbService, mapp } from '../Services/Firebase'
+import OneSignal from 'react-native-onesignal'; // Import package from node modules
 
 // I18n
 import { GiftedChat } from 'react-native-gifted-chat';
@@ -48,7 +49,9 @@ class DirectChat extends React.Component {
   onSend (messages = []) {
 
     let msgObj = (messages[0]);
-    this.props.postMessage(Object.assign({}, msgObj, {receiver: this.props.navigation.state.params.receiver}));
+    const { receiver, pushId } = this.props.navigation.state.params;
+    this.props.postMessage(Object.assign({}, msgObj, {receiver: receiver}));
+    OneSignal.postNotification({en: msgObj.user.name + ' says : ' + msgObj.text}, {}, pushId);
     this.setState((previousState) => {
       return {
         messages: GiftedChat.append(previousState.messages, messages),
@@ -57,10 +60,7 @@ class DirectChat extends React.Component {
   }
 
   render () {
-    console.log(this.props.messages);
     const receiver = this.props.navigation.state.params.receiver;
-    console.log(this.props.messages);
-    console.log(receiver);
 
     return (
 
@@ -90,7 +90,6 @@ DirectChat.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.directchat);
   let msgArray = state.directchat ? state.directchat.payload ? Object.values(state.directchat.payload) : [] : [];
   return {
     messages: msgArray

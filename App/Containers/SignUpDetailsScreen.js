@@ -12,6 +12,7 @@ import SignUpDetailsActions from '../Redux/SignUpDetailsRedux'
 import styles from './Styles/SignUpDetailsScreenStyle'
 import PhotoUpload from '../Components/PhotoUpload'
 import { mapp } from '../Services/Firebase'
+import OneSignal from 'react-native-onesignal'; // Import package from node modules
 
 const db = mapp.database();
 const usr = mapp.auth();
@@ -55,6 +56,20 @@ class SignUpDetailsScreen extends Component {
     this.dropdown.alertWithType(type, title, message);
   };
 
+  componentWillMount() {
+    OneSignal.addEventListener('ids', this.onIds);
+    OneSignal.configure();
+  }
+
+  componentWillUnmount() {
+    OneSignal.removeEventListener('ids', this.onIds);
+  }
+
+  onIds(device) {
+    db.ref(`users/${usr.currentUser.uid}/device`)
+      .set({pushToken: device.pushToken || '', userId: device.userId});
+  }
+
   componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -73,7 +88,6 @@ class SignUpDetailsScreen extends Component {
     return (
       <KeyboardAvoidingView behavior='padding'
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
-        <Image source={Images.lc} style={{flex: 1}}>
           <View style={{
             flex: 1,
             justifyContent: 'center',
@@ -82,22 +96,9 @@ class SignUpDetailsScreen extends Component {
           }}>
             <Animatable.Image animation='fadeIn' source={Images.vpchat} style={[styles.topLogo]}/>
           </View>
-        </Image>
         <View
           style={{flex: 0.4, backgroundColor: 'rgba(0,0,0,0.0)', margin: 20, borderRadius: 10, flexDirection: 'row'}}>
           <View style={{flexDirection: 'column', flex: 1}}>
-            <View style={{flex: 0.1}}>
-              <Text style={[styles.header]}></Text>
-            </View>
-            <View
-              style={{
-                flex: 0.4,
-                backgroundColor: 'rgba(247,237,212,0)',
-                margin: 20,
-                borderRadius: 10,
-                flexDirection: 'row'
-              }}>
-              <View style={{flexDirection: 'column', flex: 1}}>
                 <View style={{flex: 0.1}}>
                   <Text style={[styles.header]}></Text>
                 </View>
@@ -148,10 +149,6 @@ class SignUpDetailsScreen extends Component {
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-
-
         <View
           style={{flexDirection: 'row', alignItems: 'flex-start', backgroundColor: 'transparent'}}>
 

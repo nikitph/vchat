@@ -22,7 +22,6 @@ export function* syncUserSaga () {
 
   while (true) {
     const {value} = yield take(channel);
-    console.log(value)
     yield put(UserListActions.userListSuccess(value))
   }
 }

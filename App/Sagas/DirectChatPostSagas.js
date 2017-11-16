@@ -10,21 +10,18 @@ export function* directChatPost (action) {
   const {text, receiver, _id} = data;
   const msgObj = Object.assign({text, _id, receiver},
     {createdAt: data.createdAt.toJSON()}, {user: data.user, sender: usr.currentUser.uid});
-  console.log(db);
-  console.log(msgObj);
+
 
   try {
     let senderMsgRef =
       db.ref(`users/${usr.currentUser.uid}/messages`)
         .push(msgObj);
     const senderMsgKey = senderMsgRef.key;
-    console.log(msgObj);
 
     let receiverMsgRef =
       db.ref(`users/${receiver}/messages`)
         .push(msgObj);
     const receiverMsgKey = receiverMsgRef.key;
-    console.log(msgObj);
 
     let notifRef =
       db.ref(`users/${receiver}/notifications`)
@@ -34,7 +31,6 @@ export function* directChatPost (action) {
     yield put(DirectChatPostActions.directChatPostSuccess({senderMsgKey, receiverMsgKey, notifKey}));
   }
   catch (error) {
-    console.log(error);
     yield put(DirectChatPostActions.directChatPostFailure({error}));
   }
 }

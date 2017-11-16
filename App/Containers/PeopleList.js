@@ -12,7 +12,7 @@ const usr = mapp.auth();
 
 class MyListItem extends React.PureComponent {
   _onPress = () => {
-    this.props.nav.navigate('DirectChat', {receiver: this.props.uid})
+    this.props.nav.navigate('DirectChat', {receiver: this.props.uid, pushId: this.props.pushId})
   };
 
   render () {
@@ -75,6 +75,7 @@ class PeopleList extends React.PureComponent {
       uid={item.uid}
       location={item.location}
       nav={nav}
+      pushId={item.device ? item.device.userId : ""}
     />
 
   }

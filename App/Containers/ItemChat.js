@@ -57,7 +57,6 @@ class ItemChat extends React.Component {
   }
 
   render () {
-    console.log(this.props.messages);
 
     return (
 
@@ -86,7 +85,6 @@ ItemChat.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.groupchat);
   let msgArray = state.groupchat ? state.groupchat.payload ? Object.values(state.groupchat.payload) : [] : [];
   return {
     messages: msgArray

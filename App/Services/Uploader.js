@@ -76,7 +76,6 @@ export function itemFileUpload (uri, name, storageRef, mime = 'image/jpeg') {
         return url;
       })
       .then((url) => {
-        console.log(url);
         resolve(url)
       })
       .catch((error) => {
