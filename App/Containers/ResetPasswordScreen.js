@@ -54,7 +54,6 @@ class ResetPasswordScreen extends Component {
     return (
       <KeyboardAvoidingView behavior='padding'
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
-        <Image source={Images.lc} style={{flex: 1}}>
           <View style={{
             flex: 1,
             justifyContent: 'center',
@@ -63,7 +62,6 @@ class ResetPasswordScreen extends Component {
           }}>
             <Animatable.Image animation='fadeIn' source={Images.vpchat} style={[styles.topLogo]}/>
           </View>
-        </Image>
         <View
           style={{flex: 0.4, backgroundColor: 'rgba(0,0,0,0.0)', margin: 20, borderRadius: 10, flexDirection: 'row'}}>
           <View style={{flexDirection: 'column', flex: 1}}>

@@ -37,7 +37,7 @@ class WalkThroughScreen extends React.Component {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'flex-end',
-            backgroundColor: 'rgba(256,256,256,0.97)'
+            backgroundColor: 'rgba(256,256,256,0.92)'
           }}>
             <Animatable.Image animation='fadeIn' source={Images.vpchat} style={[styles.topLogo]}/>
           </View>

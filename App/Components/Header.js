@@ -10,6 +10,7 @@ import Badge from '../Components/Badge'
 import * as Animatable from 'react-native-animatable'
 import { connect } from 'react-redux'
 import * as _ from 'lodash'
+import LoginActions from '../Redux/LoginRedux'
 
 const usr = mapp.auth();
 
@@ -88,7 +89,8 @@ class Header extends Component {
           <View style={{flex: 0.2, alignItems: 'center'}}>
             <Icon name="ios-log-out-outline" size={25} color="#665234" onPress={() => {
               usr.signOut();
-              this.resetAction('LoginScreen');
+              this.props.resetLogin();
+              this.resetAction('WalkThroughScreen');
             }}/>
           </View>
 
@@ -134,7 +136,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+  return {
+    resetLogin: () => dispatch(LoginActions.loginReset())
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

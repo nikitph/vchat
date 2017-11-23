@@ -11,6 +11,8 @@ import Button from 'react-native-micro-animated-button';
 import LoginActions from '../Redux/LoginRedux'
 // Styles
 import styles from './Styles/LoginScreenStyle'
+import { Platform } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 
 const colors = {
   blue: '#4285f4',
@@ -20,6 +22,14 @@ const colors = {
   red: '#A01829',
   white: 'white'
 };
+
+
+const wtAction = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({routeName: 'WalkThroughScreen'})
+  ]
+});
 
 class LoginScreen extends Component {
   static navigationOptions = {
@@ -33,8 +43,8 @@ class LoginScreen extends Component {
     this.showAlert = this.showAlert.bind(this);
 
     this.state = {
-      email: 'b@1.com',
-      password: '123456',
+      email: '',
+      password: '',
       invalidEmail: false,
       invalidPassword: false,
       incorrectPassword: false,
@@ -80,12 +90,18 @@ class LoginScreen extends Component {
     this.dropdown.alertWithType(type, title, message);
   };
 
+  componentDidMount(){
+
+    this.props.attemptLogin("", "passthrough", this.showAlert, this.props.navigation);
+
+  }
+
   render () {
     const props = this.props;
     let fetch = props.fetching;
 
     return (
-      <KeyboardAvoidingView behavior='padding'
+      <KeyboardAvoidingView behavior = { Platform.OS == 'android' ? 'height' : 'padding'}
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
           <View style={{
             flex: 1,
@@ -104,7 +120,8 @@ class LoginScreen extends Component {
             <View style={{flex: 0.7, flexDirection: 'row'}}>
               <View style={{flex: 0.1, justifyContent: 'center', alignItems: 'center'}}>
                 <Icon name="ios-arrow-back" size={50} color="#900"
-                      onPress={() => this.props.navigation.navigate('WalkThroughScreen')}
+                      onPress={() => this.props.navigation.dispatch(wtAction)
+                      }
                 />
               </View>
               <View style={{flex: 0.9}}>
@@ -123,7 +140,7 @@ class LoginScreen extends Component {
                           autoCapitalize='none'
                           autoCorrect={false}
                           style={{
-                            fontFamily: 'AvenirNext-UltraLight',
+                            fontFamily: 'Avenir',
                             textAlign: 'left',
                             color: 'rgba(0,0,0,0.8)',
                             fontSize: 18,
@@ -151,6 +168,13 @@ class LoginScreen extends Component {
                           returnKeyType='go'
                           autoCapitalize='none'
                           autoCorrect={false}
+                          style={{
+                            fontFamily: 'Avenir',
+                            textAlign: 'left',
+                            color: 'rgba(0,0,0,0.8)',
+                            fontSize: 18,
+                            fontWeight: '200'
+                          }}
                           secureTextEntry
                           underlineColorAndroid='transparent'
                           placeholder={'Password'}
