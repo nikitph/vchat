@@ -188,6 +188,7 @@ class SignUpScreen extends Component {
           errorColor={'rgba(250,50,50,1)'}
           closeInterval={6000}
           onClose={() => this.b1.reset()}
+          onCancel={() => this.b1.reset()}
         />
       </KeyboardAvoidingView>
     )
