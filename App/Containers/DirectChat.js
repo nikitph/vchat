@@ -9,8 +9,14 @@ import DirectChatPostTypes from '../Redux/DirectChatPostRedux'
 
 import { Metrics } from '../Themes'
 // external libs
-import Icon from 'react-native-vector-icons/FontAwesome'
 import Animatable from 'react-native-animatable'
+import ReactNativeTooltipMenu from 'react-native-tooltip-menu';
+import { sendEmail } from '../Services/Email'
+import { DateTime } from 'luxon';
+
+// external libs
+import Icon from 'react-native-vector-icons/Ionicons'
+import DropdownAlert from 'react-native-dropdownalert'
 
 // Styles
 import styles from './Styles/ItemChatStyle'
@@ -75,6 +81,43 @@ class DirectChat extends React.Component {
           })}
           onSend={(messages) => this.onSend(messages)}
           user={{_id: usr.currentUser.uid, name: usr.currentUser.displayName, avatar: usr.currentUser.photoURL}}
+          renderChatFooter={()=> {return (<ReactNativeTooltipMenu
+            buttonComponent={
+              <View
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0)',
+                  padding: 10,
+                  borderRadius: 25
+                }}
+              >
+                <Icon name="ios-alert-outline" size={25} color="red" />
+              </View>
+            }
+            items={[
+              {
+                label: 'Report Abuse',
+                onPress: () => {
+                  sendEmail("nikitph@gmail.com", "Abuse report", "Timestamp: " + DateTime.local().
+                  toLocaleString(DateTime.DATETIME_MED) + " in direct chat by " + usr.currentUser.displayName + " with " + receiver)
+                    .then((response) => {
+                      if (response.ok) {
+                        this.dropdown.alertWithType('success', 'Success', 'Abuse reported successfully!');
+                      }
+                      else {
+                        this.dropdown.alertWithType('error', 'Error', 'Uh oh! Something went wrong. Please try again');
+                      }
+                    });
+                }
+              }
+            ]}
+          />)}}
+        />
+        <DropdownAlert
+          ref={(ref) => this.dropdown = ref}
+          showCancel={true}
+          translucent={true}
+          errorColor={'rgba(250,50,50,1)'}
+          closeInterval={6000}
         />
       </View>
 
