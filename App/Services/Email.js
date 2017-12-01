@@ -1,6 +1,6 @@
 export function sendEmail (to, subject, body) {
 
-  const apiKey = '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';
+  const apiKey = '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';
 
   return fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
