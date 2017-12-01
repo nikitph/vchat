@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView, Image, View, Text, TextInput, PropTypes } from 'react-native'
+import {
+  ScrollView, KeyboardAvoidingView, Image, View, Text, TextInput, PropTypes, Linking,
+  TouchableOpacity
+} from 'react-native'
 import { connect } from 'react-redux'
 import { Images, Metrics } from '../Themes'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -166,7 +169,7 @@ class SignUpScreen extends Component {
 
 
         <View
-          style={{flexDirection: 'row', alignItems: 'flex-start', backgroundColor: 'white'}}>
+          style={{flexDirection: 'column', alignItems: 'center', backgroundColor: 'white', marginBottom:5}}>
           <Button
             bounce
             foregroundColor={colors.white}
@@ -180,6 +183,9 @@ class SignUpScreen extends Component {
             ref={ref => (this.b1 = ref)}
             successIconName="check"
           />
+          <Text style={{fontSize:10, color:'rgba(0,0,0,0.5)'}}>By clicking Signup you agree to our</Text>
+          <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://github.com/nikitph/template-terms-of-service/blob/master/terms_template.md')}}><Text style={{fontSize:10, color:'rgba(0,0,0,1)'}}>terms of service</Text></TouchableOpacity>
+
         </View>
         <DropdownAlert
           ref={(ref) => this.dropdown = ref}
